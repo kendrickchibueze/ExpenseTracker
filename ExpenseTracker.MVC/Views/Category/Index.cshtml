@@ -1,9 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<ExpenseTracker.BLL.Models.CategoryVM>
 
+@{
+    ViewData["PageTitle"] = "Categories";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
+    ViewData["Title"] = "Index";
+}
 
 <div class="row">
     <div class="col-md-7">
@@ -12,8 +14,8 @@
             <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="Category" field="TitleWithIcon"></e-grid-column>
-                <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+                <e-grid-column headerText="Type" template = "#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="Actions" template = "#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
     </div>
@@ -46,3 +48,37 @@
         </form>
     </div>
 </script>
+
+
+@*@model IEnumerable<ExpenseTracker.BLL.Models.CategoryVM>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddOrEdit">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Icon)</th>
+            <th>@Html.DisplayNameFor(model => model.Type)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => category.Title)</td>
+                <td>@Html.DisplayFor(modelItem => category.Icon)</td>
+                <td>@Html.DisplayFor(modelItem => category.Type)</td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@category.CategoryId">Edit</a>
+                    <a asp-action="Details" asp-route-id="@category.CategoryId">Details</a>
+                    <a asp-action="Delete" asp-route-id="@category.CategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ExpenseTracker.DAL.Entities
@@ -18,7 +19,19 @@ namespace ExpenseTracker.DAL.Entities
         public string Icon { get; set; } = "";
  
         public string Type { get; set; } = "Expense";
-        public IEnumerable<Transaction> Transactions { get; set; }
+        [JsonIgnore]
+        public ICollection<Transaction> Transactions { get; set; }
+
+
+
+        [NotMapped]
+        public string? TitleWithIcon
+        {
+            get
+            {
+                return this.Icon + " " + this.Title;
+            }
+        }
 
 
     }

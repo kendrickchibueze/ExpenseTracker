@@ -1,6 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
 using ExpenseTracker.DAL.Data;
+using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+
 
 namespace ExpenseTracker.MVC
 {
@@ -12,6 +16,8 @@ namespace ExpenseTracker.MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 
 
@@ -25,6 +31,12 @@ namespace ExpenseTracker.MVC
 
             });
 
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2VVhkQlFacldJWXxIe0x0RWFab1d6dldMZVRBJAtUQF1hSn5Qd0NhWH1dcnFWRGBa");
+
+
+
+            builder.Services.AddAutoMapper(Assembly.Load("ExpenseTracker.BLL"));
 
             var app = builder.Build();
 
