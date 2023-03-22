@@ -10,18 +10,23 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.DAL.Entities
 {
-   
+
     public class Transaction:BaseEntity
     {
+        [Key]
         public int TransactionId { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a category.")]
         public int CategoryId { get; set; }
+        public Category? Category { get; set; }
 
-        [JsonIgnore]
-        public Category Category { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
         public int Amount { get; set; }
-        public string? Note { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
 
+        [Column(TypeName = "nvarchar(75)")]
+        public string? Note { get; set; }
+
+        public DateTime Date { get; set; } = DateTime.Now;
 
         [NotMapped]
         public string? CategoryTitleWithIcon
@@ -40,8 +45,10 @@ namespace ExpenseTracker.DAL.Entities
                 return ((Category == null || Category.Type == "Expense") ? "- " : "+ ") + Amount.ToString("C0");
             }
         }
+
     }
 
 
-  
+
+
 }

@@ -1,12 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @model IEnumerable<ExpenseTracker.BLL.Models.TransactionVM>
 
 @{
     ViewData["PageTitle"] = "Transactions";
     ViewData["PageActionText"] = "+ New Transaction";
     ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
+    ViewData["Title"] = "Index";
 }
 
 <div class="row">
@@ -36,7 +35,7 @@
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
         <form action="/Transaction/Delete/${TransactionId}" method="post">
-    @Html.AntiForgeryToken()
+             @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-link no-a-decoration"
             onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
                 <i class="fa-solid fa-trash-can fa-lg text-danger"></i>

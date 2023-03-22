@@ -4,7 +4,13 @@ using ExpenseTracker.DAL.Data;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
-
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
+using ExpenseTracker.BLL.Models;
 
 namespace ExpenseTracker.MVC
 {
@@ -17,7 +23,9 @@ namespace ExpenseTracker.MVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+
+           
 
 
 
@@ -30,6 +38,27 @@ namespace ExpenseTracker.MVC
                 opts.UseSqlServer(defaultConn);
 
             });
+
+
+          /*  Trace.Listeners.Add(new ConsoleTraceListener());
+
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                TraceWriter = new DiagnosticsTraceWriter(),
+            };
+
+            var serializer = JsonSerializer.Create(settings);
+
+            // Use the serializer to serialize an object
+            var obj = new TransactionVM();
+            serializer.Serialize(Console.Out, obj);*/
+
+
+
+
+
 
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2VVhkQlFacldJWXxIe0x0RWFab1d6dldMZVRBJAtUQF1hSn5Qd0NhWH1dcnFWRGBa");

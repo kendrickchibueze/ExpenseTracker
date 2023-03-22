@@ -17,9 +17,9 @@ namespace ExpenseTracker.DAL.Migrations
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, defaultValue: "Expense"),
+                    Title = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(10)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -36,7 +36,7 @@ namespace ExpenseTracker.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<int>(type: "int", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Note = table.Column<string>(type: "nvarchar(75)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)

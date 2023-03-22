@@ -25,27 +25,7 @@ namespace ExpenseTracker.MVC.Controllers
 
         }
 
-        //GET:Category
-
-        /*   public async Task<IActionResult> Index()
-           {
-               return _context.Categories != null ? View(await _context.Categories.ToListAsync()) : Problem("Entity set 'ExpenseTrackerDbContext.Categories' is null");
-           }
-   */
-
-        /*
-                public async Task<IActionResult> Index()
-                {
-                    var categories = await _context.Categories.Select(c => new CategoryVM
-                    {
-                        CategoryId = c.CategoryId,
-                        Title = c.Title,
-                        Icon = c.Icon,
-                        Type = c.Type
-                    }).ToListAsync();
-
-                    return View(categories);
-                }*/
+     
 
         public async Task<IActionResult> Index()
         {
@@ -59,22 +39,7 @@ namespace ExpenseTracker.MVC.Controllers
 
 
 
-        //GET: Category/AddOrEdit
-
-
-        /* public IActionResult AddOrEdit(int id = 0)
-         {
-
-
-             if (id == 0)
-             {
-                 return View(new CategoryVM());
-             }
-             else
-             {
-                 return View(_context.Categories.Find(id));
-             }
-         }*/
+     
 
         public IActionResult AddOrEdit(int id = 0)
         {
@@ -152,48 +117,6 @@ namespace ExpenseTracker.MVC.Controllers
         }
 
 
-
-
-        /*    [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> AddOrEdit(CategoryVM categoryVM)
-            {
-                if (ModelState.IsValid)
-                {
-                    Category category;
-
-                    if (categoryVM.CategoryId == 0)
-                    {
-                        category = new Category();
-                    }
-                    else
-                    {
-                        category = await _context.Categories.FindAsync(categoryVM.CategoryId);
-                    }
-
-                    if (category == null)
-                    {
-                        return NotFound();
-                    }
-
-                    _mapper.Map(categoryVM, category);
-
-                    if (categoryVM.CategoryId == 0)
-                    {
-                        _context.Categories.Add(category);
-                    }
-
-                    await _context.SaveChangesAsync();
-
-                    var categoriesVM = await _context.Categories
-                        .ProjectTo<CategoryVM>(_mapper.ConfigurationProvider)
-                        .ToListAsync();
-
-                    return View("Index", categoriesVM);
-                }
-
-                return View(categoryVM);
-            }*/
 
 
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ExpenseTracker.BLL.Models
@@ -14,6 +15,8 @@ namespace ExpenseTracker.BLL.Models
         public string Title { get; set; }
         public string Icon { get; set; }
         public string Type { get; set; }
+
+      
 
 
 

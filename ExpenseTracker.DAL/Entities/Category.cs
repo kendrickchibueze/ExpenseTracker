@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.DAL.Entities
 {
-    public class Category: BaseEntity
+   
+    public class Category:BaseEntity
     {
-        
+        [Key]
         public int CategoryId { get; set; }
-    
+
+        [Column(TypeName = "nvarchar(50)")]
+        [Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
 
+        [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
- 
+
+        [Column(TypeName = "nvarchar(10)")]
         public string Type { get; set; } = "Expense";
-        [JsonIgnore]
-        public ICollection<Transaction> Transactions { get; set; }
-
-
 
         [NotMapped]
         public string? TitleWithIcon
@@ -32,11 +33,9 @@ namespace ExpenseTracker.DAL.Entities
                 return this.Icon + " " + this.Title;
             }
         }
-
-
     }
 
-   
+
 
 
 }
